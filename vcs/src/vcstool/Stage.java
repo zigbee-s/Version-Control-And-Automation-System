@@ -6,22 +6,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-/**
- * Public class Stage
- * Keeps a record of files added and remvoved since last commit
- * 
- * @author xiaofei
- */
-
 public class Stage implements Serializable {
     private Commit latestCommit;
     private ArrayList<String> filesNewStaged;
     private ArrayList<String> filesMarkedForRemoval;
-    /**
-     * key: filename, value: directory
-     * null value means the file has not been added to commits
-     * or the file has been modified since last commit
-     */
+
     private Map<String, String> stagedFiles;
 
     public Stage(Commit latestCommit) {
@@ -44,14 +33,6 @@ public class Stage implements Serializable {
         return this.latestCommit;
     }
 
-    // public ArrayList<String> getFilesNewStaged() {
-    // return filesNewStaged;
-    // }
-
-    // public ArrayList<String> getFilesMarkedForRemoval() {
-    // return filesMarkedForRemoval;
-    // }
-
     public Map<String, String> getStagedFiles() {
         return this.stagedFiles;
     }
@@ -64,19 +45,11 @@ public class Stage implements Serializable {
         }
         if (unChangedFromLastCommit(fileName)) {
             System.out.println("File has not been modified since the last commit");
+        } else {
+            stagedFiles.put(fileName, null);
+            filesNewStaged.add(fileName);
         }
-        stagedFiles.put(fileName, null);
-        filesNewStaged.add(fileName);
     }
-
-    // public void remove(String fileName) {
-    // if (stagedFiles.containsKey(fileName)) {
-    // stagedFiles.remove(fileName);
-    // filesMarkedForRemoval.add(fileName);
-    // } else {
-    // System.out.println("No reason to remove the file.");
-    // }
-    // }
 
     private boolean unChangedFromLastCommit(String fileName) {
         File file = new File(fileName);

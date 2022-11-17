@@ -81,41 +81,8 @@ public class Main {
             case "commit":
                 commitTree.commit(token);
                 break;
-            // case "remove":
-            // commitTree.remove(token);
-            // break;
-            // case "log":
-            // commitTree.printlog();
-            // break;
-            // // case "global-log":
-            // commitTree.printlogGlobal();
-            // break;
-            // case "find":
-            // commitTree.find(token);
-            // break;
             case "status":
                 System.out.println(commitTree);
-                // break;
-                // case "checkout":
-                // if (args.length == 2) {
-                // commitTree.checkout(token);
-                // } else {
-                // int commitID = Integer.parseInt(token);
-                // commitTree.checkout(commitID, token2);
-                // }
-                // break;
-                // case "branch":
-                // commitTree.addNewBranch(token);
-                // break;
-                // case "rm-branch":
-                // commitTree.removeBranch(token);
-                // break;
-                // case "reset":
-                // int id = Integer.parseInt(token);
-                // commitTree.reset(id);
-                // break;
-                // case "merge":
-                // commitTree.merge(token);
             default:
                 System.out.println("No command is found");
                 break;
