@@ -1,5 +1,7 @@
 ## Getting Started
 
+- Install aws cli, and setup aws configuration
+
 ## Folder Structure
 
 The workspace contains two folders by default, where:
