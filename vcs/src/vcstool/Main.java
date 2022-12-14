@@ -9,12 +9,12 @@ import java.io.IOException;
 
 public class Main {
 
-    private static final String GITLET_DIR = ".vcs/";
+    private static final String VCS_DIR = ".vcs/";
 
     private static CommitTree init() {
-        File f = new File(GITLET_DIR);
+        File f = new File(VCS_DIR);
         if (f.exists()) {
-            System.out.println("A gitlet version control system already exists in the current directory");
+            System.out.println("A vcs version control system already exists in the current directory");
             return null;
         }
         f.mkdirs();
@@ -23,7 +23,7 @@ public class Main {
 
     private static CommitTree tryLoadTree() {
         CommitTree commitTree = null;
-        File commitTreeFile = new File(GITLET_DIR + "gitletVCS.ser");
+        File commitTreeFile = new File(VCS_DIR + "VCS.ser");
         if (commitTreeFile.exists()) {
             try {
                 FileInputStream fileIn = new FileInputStream(commitTreeFile);
@@ -45,7 +45,7 @@ public class Main {
             return;
         }
         try {
-            File commitTreeFile = new File(GITLET_DIR + "gitletVCS.ser");
+            File commitTreeFile = new File(VCS_DIR + "VCS.ser");
             FileOutputStream fileOut = new FileOutputStream(commitTreeFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(commitTree);
@@ -55,7 +55,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length == 0) {
             System.out.println("Please enter a command.");
             return;
@@ -83,6 +83,13 @@ public class Main {
                 break;
             case "status":
                 System.out.println(commitTree);
+                break;
+            case "deploy":
+                System.out.println(Deploy.creatFile());
+                break;
+            case "push":
+                System.out.println(aws.pushToBucket(token));
+                break;
             default:
                 System.out.println("No command is found");
                 break;

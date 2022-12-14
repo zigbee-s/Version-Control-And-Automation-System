@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
@@ -38,33 +37,17 @@ public class Commit implements Serializable {
         commitMsg = msg;
     }
 
-    // public static int getNumCommit() {
-    // return NumCommit;
-    // }
-
     public int getId() {
         return id;
     }
-
-    // public String getCommitMsg() {
-    // return commitMsg;
-    // }
 
     public String getCommitTime() {
         return commitTime.toString();
     }
 
-    // //public String getCommit_Dir() {
-    // return commit_Dir;
-    // }
-
     public Map<String, String> getAddedFiles() {
         return addedFiles;
     }
-
-    // //public Commit getPreviousCommit() {
-    // return previousCommit;
-    // }
 
     public boolean contains(String fileName) {
         if (addedFiles == null) {
@@ -79,49 +62,10 @@ public class Commit implements Serializable {
         return backup;
     }
 
-    // //public void restoreFile(String fileName) {
-    // File backupFile = getFile(fileName);
-    // File file = new File(fileName);
-    // try {
-    // Files.copy(backupFile.toPath(), file.toPath(), REPLACE_EXISTING,
-    // COPY_ATTRIBUTES);
-    // } catch (IOException e) {
-    // String msg = "IOException when restoring file";
-    // System.out.println(msg);
-    // }
-    // }
-
-    // public void restoreAllFiles() {
-    // Collection<String> fileNames = addedFiles.keySet();
-    // for (String fileName : fileNames) {
-    // restoreFile(fileName);
-    // }
-    // }
-
-    // public void copyFile(Commit other, String fileName, String fileNameCopy) {
-    // File originFile = other.getFile(fileName);
-    // String copyPath = commit_Dir + fileNameCopy;
-    // File copyFile = new File(copyPath);
-    // try {
-    // Files.copy(originFile.toPath(), copyFile.toPath(), REPLACE_EXISTING,
-    // COPY_ATTRIBUTES);
-    // } catch (IOException e) {
-    // String msg = "IOException when copying file";
-    // System.out.println(msg);
-    // }
-    // this.addedFiles.put(fileNameCopy, commit_Dir);
-    // }
-
-    // public boolean modified(Commit other, String fileName) {
-    // File originFile = other.getFile(fileName);
-    // File thisFile = this.getFile(fileName);
-    // return thisFile.lastModified() > originFile.lastModified();
-    // }
-
     private void saveFiles() {
-        // make directory
         File dir = new File(commit_Dir);
         dir.mkdirs();
+
         if (addedFiles == null) {
             return;
         }

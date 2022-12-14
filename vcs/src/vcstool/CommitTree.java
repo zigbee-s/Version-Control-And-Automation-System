@@ -1,8 +1,6 @@
 package vcstool;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
