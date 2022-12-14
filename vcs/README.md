@@ -14,3 +14,8 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 - Go to bin directory
 - jar cfm vcstool.jar manifest.txt vcstool
 - jpackage --name vcstool --input . --main-jar vcstool.jar --main-class vcstool.Main --win-console
+
+## Commands
+
+- `push <bucketnam>`: Push .vcs directory to the specified aws bucket
+- `deploy`: Create a docker image with a new version, and run it inside a container
