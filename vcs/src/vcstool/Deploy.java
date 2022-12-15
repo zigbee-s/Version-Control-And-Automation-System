@@ -22,7 +22,8 @@ public class Deploy {
                     str = Integer.toString(version + 1);
                 }
             }
-            String command = String.format("cmd /c docker build --tag v%s .", str);
+            String command = String.format("docker build --tag image:v%s .", str);
+            System.out.println(command);
             OS.runCommand(command);
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("version.txt"));
