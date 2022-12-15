@@ -90,6 +90,9 @@ public class Main {
             case "push":
                 System.out.println(aws.pushToBucket(token));
                 break;
+            case "log":
+                commitTree.printlog();
+                break;
             default:
                 System.out.println("No command is found");
                 break;

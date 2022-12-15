@@ -63,6 +63,15 @@ public class CommitTree implements Serializable {
         commitMsgToID.put(msg, temp);
     }
 
+    public void printlog(){
+        Commit currentCommit = currentBranch.getHead();
+        while(currentCommit!=null){
+            System.out.println(currentCommit.toString());
+            System.out.println();
+            currentCommit = currentCommit.getPreviousCommit();
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
