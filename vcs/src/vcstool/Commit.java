@@ -23,7 +23,6 @@ public class Commit implements Serializable {
     public Commit(Stage currentStage) {
         
         commitTime = new Date();
-        commit_Dir = Prefix_Dir + commitTime.hashCode() + "/";
         if (currentStage != null) {
             addedFiles = currentStage.getStagedFiles();
             previousCommit = currentStage.getLatestCommit();
@@ -32,6 +31,7 @@ public class Commit implements Serializable {
         else{
             id = NumCommit + 1;
         }
+        commit_Dir = Prefix_Dir + id + "/";
         saveFiles();
     }
 
